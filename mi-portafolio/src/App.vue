@@ -1,18 +1,12 @@
 <template>
-  <HelloWorld msg="Fredery Canchica"/>
   <div id="app">
     <router-view />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+  name: 'App'
 }
 </script>
 

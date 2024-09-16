@@ -25,44 +25,37 @@
       <div class="project-list">
         <div class="project-item" v-for="project in projects" :key="project.id">
           <router-link :to="project.link">
-          <img :src="project.image" :alt="project.title" />
-        </router-link>
+            <img :src="project.image" :alt="project.title" />
+          </router-link>
           <h3>{{ project.title }}</h3>
           <p>{{ project.description }}</p>
         </div>      
-        <TetrisGame />
       </div>
     </section>
-    
 
-    
     <!-- Skills Section -->
     <section class="skills">
       <h2>Skills</h2>
-        <div class="skills-carousel">
-          <div class="skills-list">
-            <div class="skill-item" v-for="skill in skills" :key="skill.name">
-              <img :src="skill.icon" :alt="skill.name" />
-              <p>{{ skill.name }}</p>
-            </div>
+      <div class="skills-carousel">
+        <div class="skills-list">
+          <div class="skill-item" v-for="skill in skills" :key="skill.name">
+            <img :src="skill.icon" :alt="skill.name" />
+            <p>{{ skill.name }}</p>
           </div>
         </div>
+      </div>
     </section>
 
     <!-- Footer Section -->
     <footer class="footer">
       <p>© 2024 Fredery Canchica. All Rights Reserved.</p>
-      <p>Find me on <a href="www.linkedin.com/in/FrederyCanchica-Sec-Dev">LinkedIn</a> | <a href="https://github.com/FrederyCanchica">GitHub</a></p>
+      <p>Find me on <a href="https://www.linkedin.com/in/FrederyCanchica-Sec-Dev">LinkedIn</a> | <a href="https://github.com/FrederyCanchica">GitHub</a></p>
     </footer>
   </div>
 </template>
-<script>
-import TetrisGame from '@/components/TetrisGame.vue';
 
+<script>
 export default {
-  components: {
-    TetrisGame
-  },
   data() {
     return {
       title: "Fredery Canchica",
@@ -87,7 +80,7 @@ export default {
           id: 3,
           title: "Tetris Game",
           description: "A classic Tetris game implemented in Python using Pygame. View the source code on GitHub or download it to run locally.",
-          image: "/icons/TetrisGame.jpg", // Asegúrate de tener esta imagen en la carpeta de assets
+          image: "/icons/TetrisGame.jpg",
           link: "/tetris"
         },
       ],
@@ -98,13 +91,12 @@ export default {
         { name: "JavaScript", icon: "icons/IconoJS.png" },
         { name: "GitHub", icon: "icons/IconoGH.png" },
         { name: "Linux", icon: "icons/IconoLinux.png" },
-
       ],
     };
   },
 };
 </script>
-|
+
 <style scoped>
 /* General Styles */
 body {
