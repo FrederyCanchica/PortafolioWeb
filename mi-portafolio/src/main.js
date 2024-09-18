@@ -1,10 +1,13 @@
-import { createApp } from 'vue'
-import App from './App.vue'
+import { createApp } from 'vue';
+import App from './App.vue';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import router from './router' // Importa el router
+import router from './router'; // Importa el router
 
-const app = createApp(App)
+// Crea la aplicación Vue
+const app = createApp(App);
 
-app.use(router)
+// Usa el router en la aplicación
+app.use(router);
 
-app.mount('#app')
+// Monta la aplicación en el elemento con el id "app"
+app.mount('#app');

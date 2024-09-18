@@ -19,26 +19,21 @@ export default {
 
 <style scoped>
 .tetris-game {
-  background-image: url('/mi-portafolio/public/icons/universe.jpg'); /* Asegúrate de que la ruta sea correcta */
-  background-size: cover; /* Asegúrate de que la imagen cubra toda el área del contenedor */
-  background-position: center; /* Centra la imagen de fondo */
-  background-repeat: no-repeat; /* Evita que la imagen se repita */
-  height: 100vh; /* Asegúrate de que el contenedor ocupe toda la altura de la ventana */
+  background-color: rgb(0, 0, 0); /* Fondo negro para toda la página */
+  height: 100vh; /* Ocupa toda la altura de la ventana */
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; /* Centra el contenedor del juego */
 }
 
-  canvas {
-    background-color: black;
-    display: block;
-    margin: auto;
-  }
-  .tetris-container {
-  text-align: center;
+.canvas-container {
+  background-color: white; /* Color del margen (blanco) */
+  padding: 50px; /* Margen blanco alrededor del canvas */
+  box-sizing: content-box; /* Asegura que el padding no afecte el tamaño del canvas */
 }
-#tetris-game {
-  margin: 0 auto;
+
+canvas {
+  display: block;
+  background-color: rgb(0, 0, 0); /* Fondo negro solo dentro del canvas */
 }
-  </style>
-  
+</style>
