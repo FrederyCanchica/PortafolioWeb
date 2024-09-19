@@ -14,7 +14,8 @@
     <section class="about">
       <h2>About Me</h2>
       <div class="about-content">
-        <img src="path-to-your-photo.jpg" alt="Fredery Canchica" class="profile-pic" />
+        <i class="bi bi-terminal"></i>
+        <!-- <img src="path-to-your-photo.jpg" alt="Fredery Canchica" class="profile-pic" /> -->
         <p>I am Fredery Canchica (@fcan_357), a passionate developer skilled in Python, Vue.js, and an eternal learner of web development and cybersecurity. I love exploring new technologies and using them to solve real-world problems.</p>
       </div>
     </section>
@@ -49,7 +50,15 @@
     <!-- Footer Section -->
     <footer class="footer">
       <p>© 2024 Fredery Canchica. All Rights Reserved.</p>
-      <p>Find me on <a href="https://www.linkedin.com/in/FrederyCanchica-Sec-Dev">LinkedIn</a> | <a href="https://github.com/FrederyCanchica">GitHub</a></p>
+      <p>Find me on 
+        <a href="https://www.linkedin.com/in/FrederyCanchica-Sec-Dev" target="_blank">
+          <i class="bi bi-linkedin"></i>
+        </a> 
+        | |  >
+        <a href="https://github.com/FrederyCanchica" target="_blank">
+          <i class="bi bi-github"></i>
+        </a>
+      </p>
     </footer>
   </div>
 </template>
@@ -89,7 +98,14 @@ export default {
         { name: "Vue.js", icon: "/icons/favicon.ico" },
         { name: "HTML", icon: "icons/iconoHTML.webp" },
         { name: "JavaScript", icon: "icons/IconoJS.png" },
-        { name: "GitHub", icon: "icons/IconoGH.png" },
+        { name: "GitHub", icon: "icons/iconoGH.png"},
+        { name: "Linux", icon: "icons/IconoLinux.png" },
+        /*    Duplicado de  skills*/ 
+        { name: "Python", icon: "/icons/learnpython.org.ico" },
+        { name: "Vue.js", icon: "/icons/favicon.ico" },
+        { name: "HTML", icon: "icons/iconoHTML.webp" },
+        { name: "JavaScript", icon: "icons/IconoJS.png" },
+        { name: "GitHub", icon: "icons/iconoGH.png" },
         { name: "Linux", icon: "icons/IconoLinux.png" },
       ],
     };
@@ -98,20 +114,32 @@ export default {
 </script>
 
 <style scoped>
+.bi-terminal{
+  font-size: 24px; /* Ajustar el tamaño del ícono */
+  color: rgb(250, 250, 250); /* Cambiar el color de la estrella */
+  margin-right: 10px; /* Añadir espacio a la derecha del ícono */
+}
 /* General Styles */
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background-color: #1b3a4b;
-  color: white;
+  background-color: #000000;
+  color: rgb(240, 0, 0);
+}
+
+.about{
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #8d8888; /* about fondo*/
+  color: rgb(255, 255, 255); /* letras del segundo fondo */
 }
 
 /* Hero Section */
 .hero {
-  background-color: #1b3a4b;
+  background-color: #000000; /* primer fondo */
   padding: 100px 20px;
   text-align: center;
-  color: white;
+  color: rgb(255, 255, 255);/* letras del primer fondo */
 }
 .hero-content h1 {
   font-size: 3em;
@@ -126,15 +154,15 @@ body {
   margin-bottom: 30px;
 }
 .btn {
-  background-color: #ff6f61;
-  color: white;
+  background-color: #5eff00;
+  color: rgb(255, 255, 255); /* Letras del boton de view my work */
   padding: 10px 20px;
   text-decoration: none;
   border-radius: 5px;
   transition: background-color 0.3s;
 }
 .btn:hover {
-  background-color: #ff8361;
+  background-color: #f50000;
 }
 
 /* About Section */
@@ -156,7 +184,7 @@ body {
 /* Projects Section */
 .projects {
   padding: 50px 20px;
-  background-color: #f5f5f5;
+  background-color: #ff5100;
   color: black;
   text-align: center;
 }
@@ -167,7 +195,7 @@ body {
   gap: 20px;
 }
 .project-item {
-  background-color: white;
+  background-color: rgb(255, 255, 255);/* Fondo de los proyectos*/
   border-radius: 10px;
   padding: 20px;
   width: 300px;
@@ -180,19 +208,22 @@ body {
 /* Skills Section */
 .skills {
   padding: 50px 20px;
-  background-color: #2ecc71;
+  background-color: #577763;
   text-align: center;
+  color: whitesmoke;
 }
 
 .skills-carousel {
   overflow: hidden; /* Para ocultar íconos fuera del área visible */
+  position: relative;
 }
 
 .skills-list {
   display: flex;
   justify-content: flex-start;
   flex-wrap: nowrap; /* Evitar el salto de línea, mantiene en fila */
-  gap: 20px;
+  gap: 50px;
+  flex-wrap: nowrap;
   animation: scroll 10s linear infinite; /* Animación de carrusel */
 }
 
@@ -201,11 +232,12 @@ body {
   flex-direction: column;
   align-items: center;
   transition: transform 0.3s ease; /* Suaviza la transición del hover */
+  padding: 20px; /* Agrega un padding extra */
 }
 
 .skill-item img {
-  width: 60px;
-  margin-bottom: 10px;
+  width: 50px;
+  margin-bottom: 30px;
   transition: transform 1s ease; /* Suaviza la maximización al hacer hover */
 }
 
@@ -221,18 +253,18 @@ body {
 /* Animación para el carrusel */
 @keyframes scroll {
   0% {
-    transform: translateX(-0); /* Inicia en la posición inicial */
+    transform: translateX(0); /* Inicia en la posición inicial */
   }
-  50% {
-    transform: translateX(100%); /* Mueve el carrusel por la mitad del contenido */
+  100% {
+    transform: translateX(-100%); /* Mueve el carrusel por la mitad del contenido */
   }
 }
 /* Footer */
 .footer {
-  background-color: #1b3a4b;
+  background-color: #fafafa;
   padding: 20px;
   text-align: center;
-  color: white;
+  color: rgb(0, 0, 0);
 }
 .footer a {
   color: #ff6f61;
@@ -240,5 +272,17 @@ body {
 }
 .footer a:hover {
   text-decoration: underline;
+}
+a i {
+  font-size: 24px; /* Tamaño de los íconos */
+  color: #0077b5;  /* Color para LinkedIn (azul) */
+}
+
+a i.fa-github {
+  color: black; /* Color para GitHub (negro) */
+}
+
+a {
+  margin-right: 10px; /* Espacio entre los íconos */
 }
 </style>
