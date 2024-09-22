@@ -80,10 +80,10 @@ export default {
         },
         {
           id: 2,
-          title: "Project 2",
-          description: "A security-focused web app developed with modern best practices.",
-          image: "path-to-project2-image.jpg",
-          link: "#"
+          title: "Barberia Movil",
+          description: "Este proyecto esta enfocado en la agenda de citas para servicios de Estetica y belleza a domcilio en Madrid.",
+          image: "/public/fondo_barberia.jpg",
+          link: "/BarberMobile"
         },
         {
           id: 3,
@@ -116,8 +116,10 @@ export default {
 <style scoped>
 .bi-terminal{
   font-size: 24px; /* Ajustar el tamaño del ícono */
-  color: rgb(250, 250, 250); /* Cambiar el color de la estrella */
+  color: rgb(106, 231, 34); /* Cambiar el color de la estrella */
   margin-right: 10px; /* Añadir espacio a la derecha del ícono */
+  background-color: #000000;
+  background-size:auto;
 }
 /* General Styles */
 body {
