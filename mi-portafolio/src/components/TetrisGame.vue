@@ -1,6 +1,14 @@
 <template>
   <div class="tetris-game">
-    <canvas id="tetrisCanvas" width="300" height="600"></canvas>
+    <canvas id="tetrisCanvas" width="600" height="646"></canvas>
+    <button 
+      id="pauseButton" 
+      class="pause-button" 
+      v-if="isPaused" 
+      @click="togglePause"
+    >
+      Reanudar
+    </button>
   </div>
 </template>
 
@@ -8,32 +16,62 @@
 import tetris from '@/assets/tetris';
 
 export default {
+  data() {
+    return {
+      isPaused: false,
+    };
+  },
   mounted() {
-    tetris();
-    const script = document.createElement('script');
-    script.src = require('@/assets/tetris.js');
-    document.body.appendChild(script);
-  }
-}
+    // Llamar a la función tetris pasando la instancia del componente
+    tetris(this);
+  },
+  methods: {
+    togglePause() {
+      this.isPaused = !this.isPaused; // Cambia el estado de pausa
+      // Para asegurarte de que el juego pause/reanude adecuadamente
+      if (this.isPaused) {
+        console.log('Juego pausado');
+      } else {
+        console.log('Juego reanudado');
+      }
+    },
+  },
+};
 </script>
 
 <style scoped>
 .tetris-game {
-  background-color: rgb(0, 0, 0); /* Fondo negro para toda la página */
-  height: 100vh; /* Ocupa toda la altura de la ventana */
+  background-image: url('@/assets/icons_/universe.jpg');
+  background-color: rgb(0, 0, 0);
+  background-size: cover; 
+  background-position: center;
+  height: 100vh; 
   display: flex;
-  justify-content: center;
-  align-items: center; /* Centra el contenedor del juego */
-}
-
-.canvas-container {
-  background-color: white; /* Color del margen (blanco) */
-  padding: 50px; /* Margen blanco alrededor del canvas */
-  box-sizing: content-box; /* Asegura que el padding no afecte el tamaño del canvas */
+  flex-direction: column; /* Apila canvas y botón verticalmente */
+  justify-content: center; /* Centra verticalmente */
+  align-items: center; /* Centra horizontalmente */
+  position: relative; /* Necesario para posicionar el botón */
 }
 
 canvas {
   display: block;
-  background-color: rgb(0, 0, 0); /* Fondo negro solo dentro del canvas */
+  background-color: rgb(0, 0, 0);
+  border: 2px solid #fff; /* Añadir un borde para mejorar la visibilidad del canvas */
+}
+
+.pause-button {
+  position: absolute;
+  top: 10px; /* Ajusta la posición del botón */
+  left: 10px; /* Ajusta la posición del botón */
+  padding: 10px;
+  background-color: #4CAF50; /* Color verde */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pause-button:hover {
+  background-color: #45a049; /* Color verde más oscuro al pasar el mouse */
 }
 </style>

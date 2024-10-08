@@ -22,17 +22,17 @@
 
     <!-- Projects Section -->
     <section id="projects" class="projects">
-      <h2>Projects</h2>
-      <div class="project-list">
-        <div class="project-item" v-for="project in projects" :key="project.id">
-          <router-link :to="project.link">
-            <img :src="project.image" :alt="project.title" />
-          </router-link>
-          <h3>{{ project.title }}</h3>
-          <p>{{ project.description }}</p>
-        </div>      
-      </div>
-    </section>
+  <h2>Projects</h2>
+  <div class="project-list">
+    <div class="project-item" v-for="project in projects" :key="project.id">
+      <a :href="project.link" target="_blank" rel="noopener noreferrer">
+        <img :src="project.image" :alt="project.title" />
+        <h3>{{ project.title }}</h3>
+        <p>{{ project.description }}</p>
+      </a>
+    </div>      
+  </div>
+</section>
 
     <!-- Skills Section -->
     <section class="skills">
@@ -50,13 +50,15 @@
     <!-- Footer Section -->
     <footer class="footer">
       <p>© 2024 Fredery Canchica. All Rights Reserved.</p>
-      <p>Find me on 
+      <p>Find me on  
         <a href="https://www.linkedin.com/in/FrederyCanchica-Sec-Dev" target="_blank">
           <i class="bi bi-linkedin"></i>
         </a> 
-        | |  >
         <a href="https://github.com/FrederyCanchica" target="_blank">
           <i class="bi bi-github"></i>
+        </a>
+        <a href="https://www.youtube.com/@FrederyCanchica" target="_blank">
+          <i class="bi bi-youtube"></i>
         </a>
       </p>
     </footer>
@@ -75,14 +77,14 @@ export default {
           id: 1,
           title: "Project 1",
           description: "A project showcasing Vue.js and Python integration.",
-          image: "path-to-project1-image.jpg",
+          image: "/icons/web-scraping.jpg",
           link: "#"
         },
         {
           id: 2,
           title: "Barberia Movil",
-          description: "Este proyecto esta enfocado en la agenda de citas para servicios de Estetica y belleza a domcilio en Madrid.",
-          image: "/public/fondo_barberia.jpg",
+          description: "Este proyecto está enfocado en la agenda de citas para servicios de Estética y belleza a domicilio en Madrid.",
+          image: "/icons/barberbackground.jpg",
           link: "/BarberMobile"
         },
         {
@@ -100,26 +102,24 @@ export default {
         { name: "JavaScript", icon: "icons/IconoJS.png" },
         { name: "GitHub", icon: "icons/iconoGH.png"},
         { name: "Linux", icon: "icons/IconoLinux.png" },
-        /*    Duplicado de  skills*/ 
-        { name: "Python", icon: "/icons/learnpython.org.ico" },
-        { name: "Vue.js", icon: "/icons/favicon.ico" },
-        { name: "HTML", icon: "icons/iconoHTML.webp" },
-        { name: "JavaScript", icon: "icons/IconoJS.png" },
-        { name: "GitHub", icon: "icons/iconoGH.png" },
-        { name: "Linux", icon: "icons/IconoLinux.png" },
       ],
+      animationDuration: 10, 
     };
   },
 };
 </script>
 
 <style scoped>
-.bi-terminal{
+.bi-terminal {
+  display: inline-flex; /* Para que se ajuste al contenido */
+  align-items: center; /* Centrar verticalmente */
+  justify-content: center; /* Centrar horizontalmente */
+  width: 21px; /* Ajustar el ancho */
+  height: 20px; /* Ajustar la altura */
   font-size: 24px; /* Ajustar el tamaño del ícono */
-  color: rgb(106, 231, 34); /* Cambiar el color de la estrella */
-  margin-right: 10px; /* Añadir espacio a la derecha del ícono */
-  background-color: #000000;
-  background-size:auto;
+  color: rgb(36, 36, 36); /* Cambiar el color de la estrella */
+  background-color: #8d8888; /* Fondo blanco */
+  background-size: cover; /* Asegura que el fondo cubra el área */
 }
 /* General Styles */
 body {
@@ -157,7 +157,7 @@ body {
 }
 .btn {
   background-color: #5eff00;
-  color: rgb(255, 255, 255); /* Letras del boton de view my work */
+  color: rgb(0, 0, 0); /* Letras del boton de view my work */
   padding: 10px 20px;
   text-decoration: none;
   border-radius: 5px;
@@ -165,6 +165,7 @@ body {
 }
 .btn:hover {
   background-color: #f50000;
+  color: white;
 }
 
 /* About Section */
@@ -190,22 +191,32 @@ body {
   color: black;
   text-align: center;
 }
+
 .project-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
 }
+
 .project-item {
-  background-color: rgb(255, 255, 255);/* Fondo de los proyectos*/
+  background-color: rgb(255, 255, 255); /* Fondo de los proyectos */
   border-radius: 10px;
   padding: 20px;
   width: 300px;
 }
+
 .project-item img {
   width: 100%;
   border-radius: 10px;
 }
+
+/* Estilo para los enlaces */
+.project-item a {
+  text-decoration: none; /* Elimina el subrayado */
+  color: inherit; /* Mantiene el color del texto del padre */
+}
+
 
 /* Skills Section */
 .skills {
@@ -218,32 +229,30 @@ body {
 .skills-carousel {
   overflow: hidden; /* Para ocultar íconos fuera del área visible */
   position: relative;
+  width: 100%;
 }
 
 .skills-list {
   display: flex;
-  justify-content: flex-start;
-  flex-wrap: nowrap; /* Evitar el salto de línea, mantiene en fila */
-  gap: 50px;
-  flex-wrap: nowrap;
-  animation: scroll 10s linear infinite; /* Animación de carrusel */
+  gap: 50px; /* Espacio entre habilidades */
+  animation: scroll 120s linear infinite; /* Animación de carrusel */
+  width: calc(100% * 2); /* Duplicar el ancho total para que la animación parezca continua */
 }
 
 .skill-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: transform 0.3s ease; /* Suaviza la transición del hover */
+  transition: transform 0.10s ease; /* Suaviza la transición del hover */
   padding: 20px; /* Agrega un padding extra */
 }
 
 .skill-item img {
   width: 50px;
-  margin-bottom: 30px;
-  transition: transform 1s ease; /* Suaviza la maximización al hacer hover */
+  margin-bottom: 50px;
+  transition: transform 5s ease; /* Suaviza la maximización al hacer hover */
 }
 
-/* Efecto de hover: Aumenta el tamaño del ícono y pausa el carrusel */
 .skills-carousel:hover .skills-list {
   animation-play-state: paused; /* Pausa el carrusel al hacer hover en el contenedor */
 }
@@ -252,15 +261,17 @@ body {
   transform: scale(1.2); /* Maximiza el ícono al pasar el ratón */
 }
 
-/* Animación para el carrusel */
 @keyframes scroll {
   0% {
-    transform: translateX(0); /* Inicia en la posición inicial */
+    transform: translateX(-100); /* Inicia en la posición inicial */
   }
   100% {
-    transform: translateX(-100%); /* Mueve el carrusel por la mitad del contenido */
+    transform: translateX(100%); /* Mueve el carrusel completamente a la izquierda */
   }
 }
+
+
+
 /* Footer */
 .footer {
   background-color: #fafafa;

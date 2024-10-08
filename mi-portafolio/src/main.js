@@ -2,6 +2,7 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import router from './router'; // Importa el router
+import './assets/swiper.css';
 
 // Crea la aplicación Vue
 const app = createApp(App);

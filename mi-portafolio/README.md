@@ -1,5 +1,7 @@
 # mi-portafolio
+Mi portafolio es un proyecto pensado solo para  conseguir empleo de forma remota, y ademas demostrar mis habilidades en ciberseguridad y desarrollo web. 
 
+hay una version del juego de tetris en python.
 ## Project setup
 ```
 npm install
