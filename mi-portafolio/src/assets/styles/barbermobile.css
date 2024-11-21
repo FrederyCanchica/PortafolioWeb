@@ -1,0 +1,50 @@
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+.menu{
+  background-color:rgba(0, 0, 0, 0.492);
+    color: rgb(255, 221, 0);
+    text-align: relative;
+    padding: 30px 40px;
+    position: absolute;
+    width: 100%;
+    height: 9vh;
+    z-index: 20;
+    font-size: 20px;
+    justify-content: center;
+    align-items: relative;
+    list-style: none;
+}
+.menu li{
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  padding: 1px;
+}
+.menu li a{
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  padding: 65px;
+}
+.menu li a:hover{
+  color: rgb(117, 102, 5);
+
+}
+  /* Estilos del footer */
+  footer {
+    background-color:rgba(0, 0, 0, 0.492);
+    color: rgb(255, 221, 0);
+    text-align: center;
+    padding: 30px 10px;
+    position: fixed;
+    bottom: 0; /*Esto lo coloca al fondo*/
+    width: 100%;
+    height: 9vh;
+    z-index: 10;
+    font-size: 18px;
+    justify-content: center;
+    align-items: center;
+  }

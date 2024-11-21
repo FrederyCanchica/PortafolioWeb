@@ -1,4 +1,6 @@
 <template>
+  <title>Fredery Canchica </title>
+
   <div class="portfolio">
     <!-- Hero Section -->
     <section class="hero">
@@ -6,15 +8,19 @@
         <h1>{{ title }}</h1>
         <h2>{{ subtitle }}</h2>
         <p>{{ description }}</p>
-        <a href="#projects" class="btn">View My Work</a>
+        <a href="#projects" class="btn btn-glow">
+          <span class="glow"></span>
+          View My Work
+        </a>
       </div>
     </section>
 
     <!-- About Me Section -->
     <section class="about">
       <h2>About Me</h2>
+      <br>
       <div class="about-content">
-        <i class="bi bi-terminal"></i>
+        <!-- <i class="bi bi-terminal"></i> -->
         <!-- <img src="path-to-your-photo.jpg" alt="Fredery Canchica" class="profile-pic" /> -->
         <p>I am Fredery Canchica (@fcan_357), a passionate developer skilled in Python, Vue.js, and an eternal learner of web development and cybersecurity. I love exploring new technologies and using them to solve real-world problems.</p>
       </div>
@@ -22,17 +28,18 @@
 
     <!-- Projects Section -->
     <section id="projects" class="projects">
-  <h2>Projects</h2>
-  <div class="project-list">
-    <div class="project-item" v-for="project in projects" :key="project.id">
-      <a :href="project.link" target="_blank" rel="noopener noreferrer">
-        <img :src="project.image" :alt="project.title" />
-        <h3>{{ project.title }}</h3>
-        <p>{{ project.description }}</p>
-      </a>
-    </div>      
-  </div>
-</section>
+      <h2>Projects</h2>
+      <br>
+      <div class="project-list">
+        <div class="project-item" v-for="project in projects" :key="project.id">
+          <a :href="project.link" target="_blank" rel="noopener noreferrer">
+            <img :src="project.image" :alt="project.title" />
+            <h3>{{ project.title }}</h3>
+            <p>{{ project.description }}</p>
+          </a>
+        </div>      
+      </div>
+    </section>
 
     <!-- Skills Section -->
     <section class="skills">
@@ -46,22 +53,25 @@
         </div>
       </div>
     </section>
-
+    <br>
     <!-- Footer Section -->
-    <footer class="footer">
-      <p>© 2024 Fredery Canchica. All Rights Reserved.</p>
-      <p>Find me on  
-        <a href="https://www.linkedin.com/in/FrederyCanchica-Sec-Dev" target="_blank">
-          <i class="bi bi-linkedin"></i>
-        </a> 
-        <a href="https://github.com/FrederyCanchica" target="_blank">
-          <i class="bi bi-github"></i>
-        </a>
-        <a href="https://www.youtube.com/@FrederyCanchica" target="_blank">
-          <i class="bi bi-youtube"></i>
-        </a>
-      </p>
-    </footer>
+    <div class="content-wrapper">
+        <!-- Contenido de la página -->
+      <footer class="footer">
+        <p>© 2024 Fredery Canchica. All Rights Reserved.</p>
+        <p>Find me on  
+          <a href="https://www.linkedin.com/in/FrederyCanchica-Sec-Dev" target="_blank">
+            <i class="bi bi-linkedin"></i>
+          </a> 
+          <a href="https://github.com/FrederyCanchica" target="_blank">
+            <i class="bi bi-github"></i>
+          </a>
+          <a href="https://www.youtube.com/@FrederyCanchica" target="_blank">
+            <i class="bi bi-youtube"></i>
+          </a>
+        </p>
+      </footer>
+    </div>
   </div>
 </template>
 
@@ -98,47 +108,80 @@ export default {
       skills: [
         { name: "Python", icon: "/icons/learnpython.org.ico" },
         { name: "Vue.js", icon: "/icons/favicon.ico" },
-        { name: "HTML", icon: "icons/iconoHTML.webp" },
-        { name: "JavaScript", icon: "icons/IconoJS.png" },
-        { name: "GitHub", icon: "icons/iconoGH.png"},
-        { name: "Linux", icon: "icons/IconoLinux.png" },
+        { name: "HTML", icon: "/icons/iconoHTML.webp" },
+        { name: "JavaScript", icon: "/icons/IconoJS.png" },
+        { name: "GitHub", icon: "/icons/iconoGH.png" },
+        { name: "Linux", icon: "/icons/IconoLinux.png" },
       ],
       animationDuration: 10, 
     };
   },
+  mounted() {
+    const glowButton = document.querySelector('.btn-glow');
+    
+    // Verificar si el botón existe en el DOM antes de añadir eventos
+    if (glowButton) {
+      glowButton.addEventListener('mouseenter', this.addGlow);
+      glowButton.addEventListener('mousemove', this.drawGlow);
+      glowButton.addEventListener('mouseleave', this.removeGlow);
+    }
+  },
+  beforeUnmount() { // En Vue 2, antes de desmontar el componente
+    const glowButton = document.querySelector('.btn-glow');
+    
+    // Remover los eventos para evitar fugas de memoria
+    if (glowButton) {
+      glowButton.removeEventListener('mouseenter', this.addGlow);
+      glowButton.removeEventListener('mousemove', this.drawGlow);
+      glowButton.removeEventListener('mouseleave', this.removeGlow);
+    }
+  },
+  methods: {
+    addGlow() {
+      // Evitar agregar múltiples elementos .glow
+      if (!document.querySelector('.btn-glow .glow')) {
+        const glow = document.createElement('span'); // Crear un span para el efecto glow
+        glow.classList.add('glow');
+        document.querySelector('.btn-glow').appendChild(glow);
+      }
+    },
+    drawGlow(e) {
+      const glow = document.querySelector('.btn-glow .glow');
+      if (glow) {
+        const rect = e.currentTarget.getBoundingClientRect();
+        const x = e.clientX - rect.left - glow.offsetWidth / 2;
+        const y = e.clientY - rect.top - glow.offsetHeight / 2;
+        glow.style.transform = `translate(${x}px, ${y}px)`;
+      }
+    },
+    removeGlow() {
+      const glow = document.querySelector('.btn-glow .glow');
+      if (glow) glow.remove();
+    }
+  }
 };
 </script>
 
 <style scoped>
-.bi-terminal {
-  display: inline-flex; /* Para que se ajuste al contenido */
-  align-items: center; /* Centrar verticalmente */
-  justify-content: center; /* Centrar horizontalmente */
-  width: 21px; /* Ajustar el ancho */
-  height: 20px; /* Ajustar la altura */
-  font-size: 24px; /* Ajustar el tamaño del ícono */
-  color: rgb(36, 36, 36); /* Cambiar el color de la estrella */
-  background-color: #8d8888; /* Fondo blanco */
-  background-size: cover; /* Asegura que el fondo cubra el área */
-}
+
 /* General Styles */
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background-color: #000000;
+  background-color: #1c1d22;
   color: rgb(240, 0, 0);
 }
 
 .about{
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background-color: #8d8888; /* about fondo*/
+  background-color: #031930; /* about fondo*/
   color: rgb(255, 255, 255); /* letras del segundo fondo */
 }
 
 /* Hero Section */
 .hero {
-  background-color: #000000; /* primer fondo */
+  background-color: #1c1d22; /* primer fondo */
   padding: 100px 20px;
   text-align: center;
   color: rgb(255, 255, 255);/* letras del primer fondo */
@@ -155,19 +198,49 @@ body {
   font-size: 1.2em;
   margin-bottom: 30px;
 }
-.btn {
-  background-color: #5eff00;
-  color: rgb(0, 0, 0); /* Letras del boton de view my work */
-  padding: 10px 20px;
+/*Boton viewmywork*/ 
+.btn.btn-glow {
+  
+  top: calc(50% - 20px);
+  left: calc(50% - 120px);
+  display: inline-block;
+  padding: 12px 32px;
+  min-width: 240px;
   text-decoration: none;
+  overflow: hidden;
+  font-weight: 700;
+  font-size: 18px;
+  background: #000;
+  border: 0;
+  color: #fff;
   border-radius: 5px;
-  transition: background-color 0.3s;
+  box-shadow: 0 6px 12px -2px rgba(233, 91, 9, 0.212);
 }
-.btn:hover {
-  background-color: #f50000;
-  color: white;
+.btn.btn-glow span:not(.glow) {
+  position: relative;
+  z-index: 1;
 }
-
+.btn.btn-glow:hover {
+  color: #fff;
+}
+.btn.btn-glow:focus {
+  outline: none;
+  box-shadow: 0 0px 20px 20px rgba(241, 242, 245, 0.2);
+}
+.btn.btn-glow:active {
+  transform: translateY(1px);
+}
+.glow {
+  display: none; /* Oculto inicialmente */
+  height: 160px;
+  width: 160px;
+  background: radial-gradient(circle closest-side, #7c5ae8, transparent);
+  position: absolute;
+  border-radius: 100%;
+  top: -80px;
+  left: -80px;
+  pointer-events: none; /* Evita que interfiera con eventos del ratón */
+}
 /* About Section */
 .about {
   padding: 50px 20px;
@@ -187,8 +260,8 @@ body {
 /* Projects Section */
 .projects {
   padding: 50px 20px;
-  background-color: #ff5100;
-  color: black;
+  background-color: #ffffff;
+  color: rgb(8b4944);
   text-align: center;
 }
 
@@ -200,7 +273,7 @@ body {
 }
 
 .project-item {
-  background-color: rgb(255, 255, 255); /* Fondo de los proyectos */
+  background-color: rgb(1c1d22); /* Fondo de los proyectos */
   border-radius: 10px;
   padding: 20px;
   width: 300px;
@@ -221,7 +294,7 @@ body {
 /* Skills Section */
 .skills {
   padding: 50px 20px;
-  background-color: #577763;
+  background-color: #031930;
   text-align: center;
   color: whitesmoke;
 }
@@ -274,14 +347,21 @@ body {
 
 /* Footer */
 .footer {
-  background-color: #fafafa;
+  background-color: #1c1d22;
   padding: 20px;
   text-align: center;
-  color: rgb(0, 0, 0);
+  color: rgb(255, 249, 249);
+  margin-top: auto;
+  height: 9vh;
 }
 .footer a {
   color: #ff6f61;
   text-decoration: none;
+}
+.content-wrapper {
+  flex: 1; /* Permite que el contenido principal ocupe el espacio restante */
+  display: flex;
+  flex-direction: column;
 }
 .footer a:hover {
   text-decoration: underline;
