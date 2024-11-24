@@ -46,10 +46,10 @@
 
 <script>
 import { Swiper, SwiperSlide } from 'swiper/vue';
-import 'swiper/css';
+import '@/assets/styles/swiper.css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import '@/assets/barbermobile.css'
+import '@/assets/styles/barbermobile.css'
 import { Autoplay, Mousewheel, Pagination, Navigation } from 'swiper/modules';
 import { ref } from 'vue'; // Importa ref
 
